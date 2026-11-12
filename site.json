@@ -1,0 +1,17 @@
+{
+  "name": "Gallery 54",
+  "event": "WRC Safari Rally",
+  "headline": "Safari Rally Photography",
+  "intro": "Sun, dust, rain, mud, suspension breaking rocks, and lots of sideways action... The Safari Rally. Photographed by Gallery 54",
+  "email": "brandonmeteur@gmail.com",
+  "place": "Naivasha, Kenya",
+  "about": [
+    "Gallery 54 is a photography gallery working across the visual arts. We have followed the Safari Rally since 2024.",
+    "Every rally gets its own chapter on this page. Prints, commissions, licensing and press requests are welcome."
+  ],
+  "years": {
+    "2024": { "blurb": "Our first rally." },
+    "2025": { "blurb": "Back on the same roads with a longer lens and a lot more dust." },
+    "2026": { "blurb": "The latest chapter." }
+  }
+}

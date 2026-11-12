@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery 54 | Safari Rally photography</title>
+  <meta name="description" content="Photographs from the Safari Rally by Gallery 54, from 2024 onwards. Browse each rally, then ask about prints and licensing.">
+  <meta name="theme-color" content="#12161C">
+  <meta property="og:title" content="Gallery 54 | Safari Rally photography">
+  <meta property="og:description" content="Photographs from the Safari Rally by Gallery 54, from 2024 onwards.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      var t = localStorage.getItem("g54-theme");
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) { /* storage blocked: follow the device setting */ }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="data/gallery.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#gallery">Skip to the photos</a>
+
+  <header class="bar" id="top">
+    <a class="brand" href="#top" aria-label="Gallery 54, back to top">
+      <span>Gallery</span>
+      <svg class="roundel" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <circle cx="20" cy="20" r="19" fill="currentColor"/>
+        <text x="20" y="26.4" text-anchor="middle" font-size="19" font-weight="800" fill="#12161C" font-family="Archivo, Arial, sans-serif">54</text>
+      </svg>
+    </a>
+    <nav class="bar__years" aria-label="Rallies" id="years-nav"></nav>
+    <a class="bar__cta" href="#contact">Prints and licensing</a>
+    <button class="theme-btn" id="theme-btn" type="button" data-mode="light" aria-label="Switch to dark mode">
+      <svg class="theme-btn__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg>
+      <svg class="theme-btn__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" id="hero-media"></div>
+      <div class="hero__scrim"></div>
+      <div class="hero__body">
+        <div class="hero__years" id="hero-years" role="group" aria-label="Choose a rally"></div>
+        <div class="hero__text">
+          <h1 id="hero-title">Safari Rally photography</h1>
+          <p id="hero-intro"></p>
+          <a class="btn" id="hero-cta" href="#gallery">See the photos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery" aria-label="Photographs by year">
+      <div class="filters" id="filters" role="group" aria-label="Filter photos by subject"></div>
+      <p class="sr-only" id="status" role="status" aria-live="polite"></p>
+      <div id="rallies"></div>
+      <noscript><p class="noscript">The gallery needs JavaScript to load. Email us and we will send you the photos directly.</p></noscript>
+    </section>
+
+    <section class="about" id="contact" aria-labelledby="about-title">
+      <div class="about__inner">
+        <h2 id="about-title"><span>About Gallery 54</span></h2>
+        <div class="about__copy">
+          <div id="about-text"></div>
+          <p class="about__note">Quote the photo reference shown under each picture and we will find it straight away.</p>
+          <a class="btn" id="about-mail" href="#contact">Email the gallery</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>&copy; <span id="year">2026</span> Gallery 54. Every photograph is protected by copyright and cannot be used without our written permission.</p>
+  </footer>
+
+  <dialog class="lb" id="lightbox" aria-label="Photo viewer">
+    <div class="lb__stage" id="lb-stage"><img class="lb__img" id="lb-img" alt=""></div>
+    <button class="lb__btn lb__close" id="lb-close" type="button" aria-label="Close photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lb__btn lb__prev" id="lb-prev" type="button" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lb__btn lb__next" id="lb-next" type="button" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lb__bar">
+      <div class="lb__info">
+        <p class="lb__title" id="lb-title"></p>
+        <p class="lb__sub" id="lb-sub"></p>
+      </div>
+      <div class="lb__actions">
+        <span class="lb__count" id="lb-count"></span>
+        <a class="lb__enquire" id="lb-enquire" href="#contact">Ask about this photo</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
