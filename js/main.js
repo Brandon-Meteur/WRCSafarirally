@@ -110,7 +110,7 @@
       heroBtns[y.year].setAttribute("aria-pressed", on ? "true" : "false");
     });
     var meta = years.filter(function (y) { return y.year === year; })[0];
-    heroCta.textContent = "See all " + plural(meta.photos.length, "photo", "photos") + " from " + year;
+    heroCta.textContent = "View Photos";
     heroCta.setAttribute("href", "#" + year);
     if (!firstTime) {
       animate(heroCta, [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }],
