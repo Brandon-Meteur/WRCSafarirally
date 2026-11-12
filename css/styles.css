@@ -351,6 +351,34 @@ button { font: inherit; color: inherit; }
 .foot { background: var(--foot-bg); color: rgba(236, 237, 232, 0.78); padding: 1.5rem var(--gutter); }
 .foot p { font: 400 0.9rem/1.5 var(--display); max-width: 70ch; margin: 0 auto; text-align: center; }
 
+/* Contact choice (opens from the About button) */
+.contact {
+  width: min(26rem, calc(100% - 2rem));
+  margin: auto; padding: 0; border: 1px solid rgba(128, 134, 142, 0.35); border-radius: 12px;
+  background: var(--bg); color: var(--fg);
+}
+.contact::backdrop { background: rgba(10, 12, 16, 0.72); }
+.contact[open] { animation: pop 0.35s var(--ease-out) backwards; }
+.contact[open]::backdrop { animation: fade 0.3s ease backwards; }
+.contact__panel { display: grid; gap: 1.1rem; padding: clamp(1.25rem, 5vw, 2rem); }
+.contact__title { font: 800 1.9rem/1 var(--display); font-stretch: 75%; letter-spacing: -0.01em; }
+.contact__lead { font-size: 1.05rem; line-height: 1.5; color: var(--mute); }
+.contact__options { display: grid; gap: 0.6rem; }
+.contact__opt {
+  display: grid; gap: 0.15rem; text-decoration: none;
+  padding: 0.9rem 1.1rem; border-radius: 10px;
+  border: 1.5px solid var(--line);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.contact__opt[hidden] { display: none; }
+.contact__kind { font: 700 1.05rem/1.2 var(--display); }
+.contact__value { font: 400 1.05rem/1.3 var(--text); overflow-wrap: anywhere; }
+.contact__opt:hover { background: var(--marshal); border-color: var(--marshal); color: var(--ink); }
+.contact__close {
+  justify-self: start; cursor: pointer; background: none; border: 0; padding: 0.4rem 0;
+  font: 600 0.95rem/1 var(--display); text-decoration: underline; text-underline-offset: 3px;
+}
+
 /* Lightbox */
 .lb {
   position: fixed; inset: 0; width: 100%; height: 100%;

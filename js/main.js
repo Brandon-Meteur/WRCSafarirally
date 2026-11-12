@@ -68,6 +68,7 @@
   var heroYear = "";
 
   $("hero-intro").textContent = site.intro || "";
+  if (site.headline) $("hero-title").textContent = site.headline;
 
   years.forEach(function (y, i) {
     var cover = byId[y.cover] ? byId[y.cover].p : y.photos[0];
@@ -345,9 +346,10 @@
       var navLink = yearsNav.querySelector('a[data-year="' + y.year + '"]');
       if (navLink) navLink.hidden = visible === 0;
       var place = y.place ? " from " + y.place : "";
-      s.count.textContent = tag
+      var when = y.dates ? y.dates + ". " : "";
+      s.count.textContent = when + (tag
         ? visible + " of " + plural(y.photos.length, "photo", "photos") + " shown" + place
-        : plural(y.photos.length, "photo", "photos") + place;
+        : plural(y.photos.length, "photo", "photos") + place);
     });
     $("status").textContent = tag
       ? "Showing " + plural(shown, tag.toLowerCase() + " photo", tag.toLowerCase() + " photos")
@@ -374,10 +376,38 @@
 
   var aboutText = $("about-text");
   (site.about || []).forEach(function (t) { aboutText.appendChild(el("p", { text: t })); });
-  if (site.email) {
-    $("about-mail").setAttribute("href", "mailto:" + site.email + "?subject=" + encodeURIComponent("Prints, licensing or press enquiry"));
-  }
   $("year").textContent = new Date().getFullYear();
+
+  /* ---------- contact: call or email ---------- */
+
+  var contactBtn = $("about-contact");
+  var contactDlg = $("contact-dialog");
+  var mailHref = site.email ? "mailto:" + site.email + "?subject=" + encodeURIComponent("Prints, licensing or press enquiry") : "";
+  var telHref = site.phone ? "tel:" + String(site.phone).replace(/[^\d+]/g, "") : "";
+
+  if (mailHref) { $("contact-mail").setAttribute("href", mailHref); $("contact-email").textContent = site.email; }
+  else $("contact-mail").hidden = true;
+  if (telHref) { $("contact-call").setAttribute("href", telHref); $("contact-phone").textContent = site.phone; }
+  else $("contact-call").hidden = true;
+
+  if (!mailHref && !telHref) contactBtn.hidden = true;
+  contactBtn.addEventListener("click", function () {
+    if (mailHref && telHref) contactDlg.showModal();       // both set: let the visitor choose
+    else window.location.href = mailHref || telHref;       // only one set: go straight to it
+  });
+  $("contact-close").addEventListener("click", function () { contactDlg.close(); });
+  contactDlg.addEventListener("click", function (e) { if (e.target === contactDlg) contactDlg.close(); });
+  Array.prototype.forEach.call(contactDlg.querySelectorAll(".contact__opt"), function (a) {
+    a.addEventListener("click", function () { setTimeout(function () { if (contactDlg.open) contactDlg.close(); }, 150); });
+  });
+
+  /* ---------- logo scrolls back to the top ---------- */
+
+  $("brand").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (err) { /* ignore */ }
+  });
   watchBlock(document.querySelector(".about__inner"));
 
   /* ---------- lightbox ---------- */

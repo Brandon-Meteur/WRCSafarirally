@@ -30,7 +30,7 @@
   <a class="skip" href="#gallery">Skip to our photos</a>
 
   <header class="bar" id="top">
-    <a class="brand" href="#top" aria-label="Gallery 54, back to top">
+    <a class="brand" id="brand" href="#" aria-label="Gallery 54, back to top">
       <span>Gallery</span>
       <svg class="roundel" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
         <circle cx="20" cy="20" r="19" fill="currentColor"/>
@@ -72,7 +72,7 @@
         <div class="about__copy">
           <div id="about-text"></div>
           <p class="about__note">Quote the photo reference shown under each picture and we will find it straight away.</p>
-          <a class="btn" id="about-mail" href="#contact">Contact Us.</a>
+          <button class="btn" id="about-contact" type="button" aria-haspopup="dialog">Contact Us.</button>
         </div>
       </div>
     </section>
@@ -81,6 +81,24 @@
   <footer class="foot">
     <p>&copy; <span id="year">2026</span> Gallery 54. Every photograph is protected by copyright and cannot be used without our written permission.</p>
   </footer>
+
+  <dialog class="contact" id="contact-dialog" aria-labelledby="contact-title">
+    <div class="contact__panel">
+      <h2 class="contact__title" id="contact-title">Contact Gallery 54</h2>
+      <p class="contact__lead">Choose how you would like to reach us.</p>
+      <div class="contact__options">
+        <a class="contact__opt" id="contact-call" href="#contact">
+          <span class="contact__kind">Call</span>
+          <span class="contact__value" id="contact-phone"></span>
+        </a>
+        <a class="contact__opt" id="contact-mail" href="#contact">
+          <span class="contact__kind">Email</span>
+          <span class="contact__value" id="contact-email"></span>
+        </a>
+      </div>
+      <button class="contact__close" id="contact-close" type="button">Close</button>
+    </div>
+  </dialog>
 
   <dialog class="lb" id="lightbox" aria-label="Photo viewer">
     <div class="lb__stage" id="lb-stage"><img class="lb__img" id="lb-img" alt=""></div>
