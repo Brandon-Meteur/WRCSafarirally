@@ -349,7 +349,7 @@ button { font: inherit; color: inherit; }
 
 /* Footer */
 .foot { background: var(--foot-bg); color: rgba(236, 237, 232, 0.78); padding: 1.5rem var(--gutter); }
-.foot p { font: 400 0.9rem/1.5 var(--display); max-width: 70ch; }
+.foot p { font: 400 0.9rem/1.5 var(--display); max-width: 70ch; margin: 0 auto; text-align: center; }
 
 /* Lightbox */
 .lb {
