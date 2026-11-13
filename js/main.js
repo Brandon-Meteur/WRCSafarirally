@@ -480,6 +480,17 @@
   lb.addEventListener("close", function () {
     try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { /* ignore */ }
   });
+  // Details button: shows or hides the caption bar. Hidden by default; the choice is kept while browsing.
+  var detailsBtn = el("button", { type: "button", class: "lb__btn lb__details", id: "lb-details", "aria-pressed": "false", "aria-label": "Show photo details" });
+  detailsBtn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.25" fill="currentColor"/></svg>';
+  lb.insertBefore(detailsBtn, $("lb-close").nextSibling);
+  function setDetails(on) {
+    lb.classList.toggle("show-info", on);
+    detailsBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    detailsBtn.setAttribute("aria-label", on ? "Hide photo details" : "Show photo details");
+  }
+  detailsBtn.addEventListener("click", function () { setDetails(!lb.classList.contains("show-info")); });
+
   $("lb-close").addEventListener("click", function () { lb.close(); });
   $("lb-prev").addEventListener("click", function () { show(current - 1, -1); });
   $("lb-next").addEventListener("click", function () { show(current + 1, 1); });
@@ -490,6 +501,7 @@
     if (!lb.open) return;
     if (e.key === "ArrowLeft") { e.preventDefault(); show(current - 1, -1); }
     else if (e.key === "ArrowRight") { e.preventDefault(); show(current + 1, 1); }
+    else if ((e.key === "i" || e.key === "I") && !e.ctrlKey && !e.metaKey && !e.altKey) { setDetails(!lb.classList.contains("show-info")); }
   });
 
   // Swipe between photos on touch screens.
